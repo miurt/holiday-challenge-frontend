@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Hotel } from '../hotel';
+import { Offer } from '../offer';
+import { SearchService } from '../search.service';
+
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -28,7 +32,13 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class AllResultsComponent implements OnInit {
 
-  constructor() { }
+  offers: Offer[] = new Array<Offer>();
+  hotels: Hotel[] = new Array<Hotel>();
+  selectedHotel?: Hotel;
+
+
+  constructor(private searchService: SearchService) {
+    }
 
   ngOnInit(): void {
     
@@ -37,4 +47,12 @@ export class AllResultsComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
   clickedRows = new Set<PeriodicElement>();
+
+
+  public async setData(departureAirport: string, countAdults: number, countChildren: number, 
+    days: number, earliestDepartureDate: Date, latestDepartureDate: Date){
+    this.hotels = await this.searchService.getHotels();
+    this.offers = await this.searchService.getOffers(departureAirport, countAdults, countChildren, 
+      days, earliestDepartureDate, latestDepartureDate);
+  }
 }

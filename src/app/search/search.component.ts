@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { AllResultsComponent } from '../all-results/all-results.component';
 
 @Component({
   selector: 'app-search',
@@ -18,7 +19,7 @@ export class SearchComponent implements OnInit {
   });
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder, private allResults: AllResultsComponent
   ) {}
 
   ngOnInit(): void {
@@ -26,7 +27,11 @@ export class SearchComponent implements OnInit {
 
   onSubmit(): void {
     // Process checkout data here
+
     console.warn('Your order has been submitted', this.searchForm.value);
+    this.allResults.setData(this.searchForm.value.departureAirport!, this.searchForm.value.countAdults!,
+      this.searchForm.value.countChildren!, this.searchForm.value.days!, this.searchForm.value.earliestDepartureDate!,
+      this.searchForm.value.latestDepartureDate!);
     this.searchForm.reset();
   }
 
