@@ -1,0 +1,50 @@
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+  <p class="center">
+    <mat-form-field appearance="outline">
+    <mat-label for="departureAirport">Departure</mat-label>
+    <input matInput id="departureAirport" formControlName="departureAirport" type="text" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Destanation</mat-label>
+      <mat-select required>
+        <mat-option value="PMI">Palma de Mallorca Airport</mat-option>
+      </mat-select>
+      </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label for="countAdults">Adults</mat-label>
+      <input matInput id="countAdults" formControlName="countAdults" type="number" ng-model="theValue" name="theValue" step="1" min="1" max="10"  ng-pattern="integerval" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label for="countChildren">Children</mat-label>
+      <input matInput id="countChildren" formControlName="countChildren" type="number" ng-model="theValue" name="theValue" step="1" min="0" max="10"  ng-pattern="integerval" required>
+    </mat-form-field>
+  </p>
+
+  <p class="center">
+    <mat-form-field appearance="outline">
+      <mat-label for="days">Days</mat-label>
+      <input matInput id="days" formControlName="days" type="number" ng-model="theValue" name="theValue" step="1" min="1" max="30"  ng-pattern="integerval" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label for="earliestDepartureDate">Earliest start</mat-label>
+      <input matInput id="earliestDepartureDate" [matDatepicker]="picker1" formControlName="earliestDepartureDate" required>
+      <mat-hint>YYYY-MM-DD</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label for="latestDepartureDate">Latest start</mat-label>
+      <input matInput id="latestDepartureDate" [matDatepicker]="picker2" formControlName="latestDepartureDate" required>
+      <mat-hint>YYYY-MM-DD</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+
+    <button mat-flat-button class="button" type="submit" color="primary">Search</button>
+  </p>
+</form>
