@@ -10,7 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
-//import { MatMomentDateModule } from "@angular/material-moment-adapter";
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { MatPaginatorModule } from '@angular/material/paginator'; 
 
 import { AppRoutingModule } from './app-routing.module';
