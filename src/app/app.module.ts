@@ -37,7 +37,6 @@ import { AllResultsComponent } from './all-results/all-results.component';
     MatFormFieldModule,
     MatButtonModule,
     MatDatepickerModule,
-    MatMomentDateModule,
     MatPaginatorModule,
     MatNativeDateModule,
     MatSelectModule,
