@@ -1,3 +1,4 @@
+<div class="mat-elevation-z8">
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
     <!-- Position Column -->
     <ng-container matColumnDef="position">
@@ -31,7 +32,9 @@
         *matRowDef="let row; columns: displayedColumns;"
     ></tr>
   </table>
-
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+</mat-paginator>
+</div>
   <div>
     <h3>
       Click Log
