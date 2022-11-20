@@ -10,11 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
-<<<<<<< HEAD
-import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from "@angular/material-moment-adapter";
-=======
 //import { MatMomentDateModule } from "@angular/material-moment-adapter";
->>>>>>> parent of 99bb96f (Fixing dependency issues)
 import { MatPaginatorModule } from '@angular/material/paginator'; 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -41,7 +37,6 @@ import { AllResultsComponent } from './all-results/all-results.component';
     MatFormFieldModule,
     MatButtonModule,
     MatDatepickerModule,
-    MatMomentDateModule,
     MatPaginatorModule,
     MatNativeDateModule,
     MatSelectModule,
@@ -51,7 +46,6 @@ import { AllResultsComponent } from './all-results/all-results.component';
     BrowserAnimationsModule
   ],
   providers: [MatDatepickerModule,
-    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}}
   ],
   bootstrap: [AppComponent]
 })
