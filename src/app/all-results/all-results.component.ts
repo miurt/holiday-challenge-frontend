@@ -35,9 +35,16 @@ export class AllResultsComponent implements OnInit {
   offers: Offer[] = new Array<Offer>();
   hotels: Hotel[] = new Array<Hotel>();
   selectedHotel?: Hotel;
+  departureAirport = "";
+  countAdults = 1;
+  countChildren = 0;
+  days = 1;
+  earliestDepartureDate = new Date;
+  latestDepartureDate = new Date;
 
-
-  constructor(private searchService: SearchService) {
+  constructor(
+    private searchService: SearchService
+    ) {
     }
 
   ngOnInit(): void {
@@ -49,10 +56,23 @@ export class AllResultsComponent implements OnInit {
   clickedRows = new Set<PeriodicElement>();
 
 
-  public async setData(departureAirport: string, countAdults: number, countChildren: number, 
+  public setData(departureAirport: string, countAdults: number, countChildren: number, 
     days: number, earliestDepartureDate: Date, latestDepartureDate: Date){
-    this.hotels = await this.searchService.getHotels();
-    this.offers = await this.searchService.getOffers(departureAirport, countAdults, countChildren, 
-      days, earliestDepartureDate, latestDepartureDate);
+      this.departureAirport = departureAirport;
+      this.countAdults = countAdults;
+      this.countAdults = countChildren;
+      this.days = days;
+      this.earliestDepartureDate = earliestDepartureDate;
+      this.latestDepartureDate = latestDepartureDate;
+
+      this.getDataFromServer();
+  }
+
+  async getDataFromServer(){
+    if (this.hotels.length == 0){
+      this.hotels = await this.searchService.getHotels();
+    }
+    this.offers = await this.searchService.getOffers(this.departureAirport, this.countAdults, this.countChildren, 
+      this.days, this.earliestDepartureDate, this.latestDepartureDate);
   }
 }
