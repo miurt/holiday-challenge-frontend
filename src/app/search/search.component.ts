@@ -19,19 +19,17 @@ export class SearchComponent implements OnInit {
   });
 
   constructor(
-    private formBuilder: FormBuilder, private allResults: AllResultsComponent
+    private formBuilder: FormBuilder//, private allResults: AllResultsComponent
   ) {}
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
-    // Process checkout data here
-
     console.warn('Your order has been submitted', this.searchForm.value);
-    this.allResults.setData(this.searchForm.value.departureAirport!, this.searchForm.value.countAdults!,
-      this.searchForm.value.countChildren!, this.searchForm.value.days!, this.searchForm.value.earliestDepartureDate!,
-      this.searchForm.value.latestDepartureDate!);
+    //this.allResults.setData(this.searchForm.value.departureAirport!, this.searchForm.value.countAdults!,
+    //  this.searchForm.value.countChildren!, this.searchForm.value.days!, this.searchForm.value.earliestDepartureDate!,
+    //  this.searchForm.value.latestDepartureDate!);
     this.searchForm.reset();
   }
 
